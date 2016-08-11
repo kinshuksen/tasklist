@@ -1,0 +1,54 @@
+<header>
+    <h2>Task List</h2>
+    <h4>Total pending tasks : ( {{$ctrl.incompleteCount}} )</h4>
+
+</header>
+<section id="form-elements">
+    <div>
+
+        <form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask, $ctrl.actionBy, $ctrl.actionDate)">
+            <div class="row">
+                <div class="col-md-6">
+                    <input ng-model="$ctrl.newTask" class="form-control" type="text" name="text" placeholder="Type to add new task" />
+                </div>
+                <div class="col-md-6">
+                    <input ng-model="$ctrl.actionBy" class="form-control" type="text" name="actionBy" placeholder="Action By" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input ng-model="$ctrl.actionDate" class="form-control" type="Date" name="actionDate" placeholder="Action Date" />
+                </div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<hr>
+<label class="hide-completed">
+    <input type="checkbox" ng-model="$ctrl.hideCompleted" /> Show Completed Tasks
+</label>
+<hr>
+<section id="display">
+    <div>
+        <ul>
+            <li ng-repeat="task in $ctrl.tasks" ng-class="{'checked': task.checked}">
+
+                <div class="row">
+                    <div class="col-md-1, col-lg-1">
+                        <input type="checkbox" ng-checked="task.checked" ng-click="$ctrl.setChecked(task)" class="toggle-checked" />
+                    </div>
+
+                    <div class="col-md-5, col-lg-5">{{task.text}}</div>
+                    <div class="col-md-2, col-lg-2">{{task.actionBy}}</div>
+                    <div class="col-md-3, col-lg-3">{{task.actionDate}}</div>
+                    <div class="col-md-1, col-lg-1">
+                        <button class="delete" ng-click="$ctrl.removeTask(task)">&times;</button>
+                    </div>
+                    <div>
+            </li>
+        </ul>
+        </div>
+</section>
