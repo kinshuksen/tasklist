@@ -9,15 +9,15 @@
         <form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask, $ctrl.actionBy, $ctrl.actionDate)" ng-show="$ctrl.currentUser">
             <div class="row">
                 <div class="col-md-6">
-                    <input ng-model="$ctrl.newTask" class="form-control" type="text" name="text" placeholder="Type to add new task" />
+                    <input ng-model="$ctrl.newTask" class="form-control" type="text" name="text" placeholder="Type to add new task *"  required/>
                 </div>
                 <div class="col-md-6">
-                    <input ng-model="$ctrl.actionBy" class="form-control" type="text" name="actionBy" placeholder="Action By" />
+                    <input ng-model="$ctrl.actionBy" class="form-control" type="text" name="actionBy" placeholder="Action By *" required />
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <input ng-model="$ctrl.actionDate" class="form-control" type="Date" name="actionDate" placeholder="Action Date" />
+                    <input ng-model="$ctrl.actionDate" class="form-control" type="Date" name="actionDate" placeholder="Action Date *" required/>
                 </div>
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-success">Submit</button>
@@ -45,7 +45,7 @@
                     <div class="col-md-2, col-lg-2">{{task.actionBy}}</div>
                     <div class="col-md-3, col-lg-3">{{task.actionDate}}</div>
                     <div class="col-md-1, col-lg-1">
-                        <button class="delete" ng-click="$ctrl.removeTask(task)">&times;</button>
+                        <button class="delete" ng-click="$ctrl.removeTask(task)"><img src="/trash.png" class="trash"></button>
                     </div>
                     <div>
             </li>

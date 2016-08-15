@@ -130,3 +130,7 @@ header .hide-completed {
 .login-form-sign-in{
     align: right;
 }
+
+.trash{
+  height: 18px;
+}
