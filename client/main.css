@@ -125,3 +125,8 @@ header .hide-completed {
         padding-bottom: 5px;
     }
 }
+
+
+.login-form-sign-in{
+    align: right;
+}

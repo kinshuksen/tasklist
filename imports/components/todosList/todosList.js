@@ -1,6 +1,11 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import {
+    Meteor
+} from 'meteor/meteor';
+
+
+import {
     Tasks
 } from '../../api/tasks.js';
 
@@ -31,39 +36,41 @@ class TodosListCtrl {
                 });
             },
             incompleteCount() {
-        return Tasks.find({
-          checked: {
-            $ne: true
-          }
-        }).count();
-      }
+                return Tasks.find({
+                    checked: {
+                        $ne: true
+                    }
+                }).count();
+            },
+            currentUser() {
+                return Meteor.user();
+            }
 
         })
     }
     addTask(newTask, actionBy, actionDate) {
         // Insert a task into the collection
-        Tasks.insert({
-            text: newTask,
-            actionBy: actionBy,
-            actionDate: actionDate,
-            createdAt: new Date
-        });
+        Meteor.call('tasks.insert', newTask, actionBy, actionDate);
 
         // Clear form
         this.newTask = '';
+        this.actionBy = '';
+        this.actionDate = '';
     }
 
     setChecked(task) {
         // Set the checked property to the opposite of its current value
-        Tasks.update(task._id, {
+        Meteor.call('tasks.setChecked', task._id, !task.checked);
+        /*Tasks.update(task._id, {
             $set: {
                 checked: !task.checked
             },
-        });
+        });*/
     }
 
     removeTask(task) {
-        Tasks.remove(task._id);
+        Meteor.call('tasks.remove', task._id)
+            //Tasks.remove(task._id);
     }
 }
 

@@ -1,12 +1,12 @@
 <header>
+    <login-buttons class="navbar-right"></login-buttons>
     <h2>Task List</h2>
     <h4>Total pending tasks : ( {{$ctrl.incompleteCount}} )</h4>
-
 </header>
 <section id="form-elements">
     <div>
 
-        <form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask, $ctrl.actionBy, $ctrl.actionDate)">
+        <form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask, $ctrl.actionBy, $ctrl.actionDate)" ng-show="$ctrl.currentUser">
             <div class="row">
                 <div class="col-md-6">
                     <input ng-model="$ctrl.newTask" class="form-control" type="text" name="text" placeholder="Type to add new task" />
@@ -28,7 +28,7 @@
 </section>
 <hr>
 <label class="hide-completed">
-    <input type="checkbox" ng-model="$ctrl.hideCompleted" /> Show Completed Tasks
+    <input type="checkbox" ng-model="$ctrl.hideCompleted" /> Hide Completed Tasks
 </label>
 <hr>
 <section id="display">
