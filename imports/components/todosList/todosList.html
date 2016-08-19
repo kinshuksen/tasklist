@@ -1,15 +1,17 @@
 <header>
-    <login-buttons class="navbar-right"></login-buttons>
+    <login-buttons class="navbar-right nav-pad"></login-buttons>
     <h2>Task List</h2>
     <h4>Total pending tasks : ( {{$ctrl.incompleteCount}} )</h4>
 </header>
+<hr>
+<div class="clearfix"></div>
 <section id="form-elements">
     <div>
 
         <form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask, $ctrl.actionBy, $ctrl.actionDate)" ng-show="$ctrl.currentUser">
             <div class="row">
                 <div class="col-md-6">
-                    <input ng-model="$ctrl.newTask" class="form-control" type="text" name="text" placeholder="Type to add new task *"  required/>
+                    <input ng-model="$ctrl.newTask" class="form-control" type="text" name="text" placeholder="Type to add new task *" required/>
                 </div>
                 <div class="col-md-6">
                     <input ng-model="$ctrl.actionBy" class="form-control" type="text" name="actionBy" placeholder="Action By *" required />
@@ -21,6 +23,7 @@
                 </div>
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
                 </div>
             </div>
         </form>
@@ -31,24 +34,43 @@
     <input type="checkbox" ng-model="$ctrl.hideCompleted" /> Hide Completed Tasks
 </label>
 <hr>
+
 <section id="display">
     <div>
-        <ul>
-            <li ng-repeat="task in $ctrl.tasks" ng-class="{'checked': task.checked}">
+        <ul><li>
+          <div class="row">
+              <div class="col-md-1 col-lg-1"></div>
+              <div class="col-md-5 col-lg-5 header">Task Title</div>
+              <div class="col-md-2 col-lg-2 header">Action By</div>
+              <div class="col-md-3 col-lg-3 header">Date</div>
+              <div class="col-md-1 col-lg-1 header"></div>
+          <div></li>
 
+            <li ng-repeat="task in $ctrl.tasks" ng-class="{'checked': task.checked}">
                 <div class="row">
                     <div class="col-md-1, col-lg-1">
                         <input type="checkbox" ng-checked="task.checked" ng-click="$ctrl.setChecked(task)" class="toggle-checked" />
                     </div>
 
-                    <div class="col-md-5, col-lg-5">{{task.text}}</div>
-                    <div class="col-md-2, col-lg-2">{{task.actionBy}}</div>
-                    <div class="col-md-3, col-lg-3">{{task.actionDate}}</div>
-                    <div class="col-md-1, col-lg-1">
+                    <div class="col-md-5 col-lg-5 long-text">{{task.text}}</div>
+                    <div class="col-md-2 col-lg-2">{{task.actionBy}}</div>
+                    <div class="col-md-3 col-lg-3">{{task.actionDate}}</div>
+                    <div class="col-md-1 col-lg-1">
                         <button class="delete" ng-click="$ctrl.removeTask(task)"><img src="/trash.png" class="trash"></button>
                     </div>
-                    <div>
+                <div>
             </li>
         </ul>
         </div>
 </section>
+
+<footer class="footer">
+        <div class="container">
+                <div class="col-md-12 text-right">
+                    <p class="footer-text">
+                        <span class="elementary">Developed using Meteor & Angular JS</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
