@@ -54,7 +54,7 @@
 
                     <div class="col-md-5 col-lg-5 long-text">{{task.text}}</div>
                     <div class="col-md-2 col-lg-2">{{task.actionBy}}</div>
-                    <div class="col-md-3 col-lg-3">{{task.actionDate}}</div>
+                    <div class="col-md-3 col-lg-3">{{ task.actionDate | calendar }}</div>
                     <div class="col-md-1 col-lg-1">
                         <button class="delete" ng-click="$ctrl.removeTask(task)"><img src="/trash.png" class="trash"></button>
                     </div>

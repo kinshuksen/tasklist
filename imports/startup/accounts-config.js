@@ -6,5 +6,5 @@ Accounts.ui.config({
 
 Accounts.config({
   //Turn this off if you do not want user creation
-  //forbidClientAccountCreation: true,
+  forbidClientAccountCreation: true,
 });
